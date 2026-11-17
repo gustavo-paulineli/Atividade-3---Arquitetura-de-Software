@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalhes da Tarefa #<%= tarefa.id %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Detalhes da Tarefa #<%= tarefa.id %></h1>
+      <a href="/tarefas" class="btn btn-secondary">Voltar</a>
+    </header>
+
+    <div class="card-detalhes">
+      <p><strong>ID:</strong> <%= tarefa.id %></p>
+      <p><strong>Título:</strong> <%= tarefa.titulo %></p>
+      <p><strong>Disciplina:</strong> <%= tarefa.disciplina %></p>
+      <p><strong>Status:</strong> 
+        <span class="badge <%= tarefa.status %>">
+          <%= tarefa.status === 'pendente' ? 'Pendente' : 'Concluída' %>
+        </span>
+      </p>
+      <p><strong>Descrição:</strong></p>
+      <div class="descricao-box">
+        <%= tarefa.descricao || 'Nenhuma descrição informada.' %>
+      </div>
+    </div>
+
+    <div class="acoes-detalhes">
+      <a href="/tarefas/<%= tarefa.id %>/editar" class="btn btn-warning">Editar</a>
+      <% if (tarefa.status === 'pendente') { %>
+        <form action="/tarefas/<%= tarefa.id %>/concluir" method="POST" style="display:inline;">
+          <button type="submit" class="btn btn-success">Concluir</button>
+        </form>
+      <% } %>
+      <form action="/tarefas/<%= tarefa.id %>/excluir" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');">
+        <button type="submit" class="btn btn-danger">Excluir</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

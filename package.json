@@ -1,0 +1,14 @@
+{
+  "name": "gerenciador-tarefas-academicas-mvc",
+  "version": "1.0.0",
+  "description": "Aplicação web em Node.js com padrão MVC para gerenciamento de tarefas acadêmicas",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}

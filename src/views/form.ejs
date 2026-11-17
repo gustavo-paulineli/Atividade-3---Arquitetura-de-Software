@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title><%= tituloPagina %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><%= tituloPagina %></h1>
+      <a href="/tarefas" class="btn btn-secondary">Voltar</a>
+    </header>
+
+    <% if (erros && erros.length > 0) { %>
+      <div class="alerta-erro">
+        <ul>
+          <% erros.forEach(erro => { %>
+            <li><%= erro %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+
+    <form action="<%= acao %>" method="POST" class="formulario">
+      <div class="campo">
+        <label for="titulo">Título * (3 a 100 caracteres):</label>
+        <input type="text" id="titulo" name="titulo" value="<%= tarefa.titulo %>" required minlength="3" maxlength="100">
+      </div>
+
+      <div class="campo">
+        <label for="disciplina">Disciplina * (2 a 80 caracteres):</label>
+        <input type="text" id="disciplina" name="disciplina" value="<%= tarefa.disciplina %>" required minlength="2" maxlength="80">
+      </div>
+
+      <div class="campo">
+        <label for="descricao">Descrição (opcional, até 500 caracteres):</label>
+        <textarea id="descricao" name="descricao" rows="4" maxlength="500"><%= tarefa.descricao %></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
+    </form>
+  </div>
+</body>
+</html>
